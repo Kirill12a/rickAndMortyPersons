@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 class HomeCollectionViewCell: UICollectionViewCell {
     
     // Character Image
@@ -23,7 +24,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
-        label.font = .systemFont(ofSize: 13, weight: .bold)
+        label.font = .systemFont(ofSize: 12, weight: .bold)
         label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,19 +50,13 @@ class HomeCollectionViewCell: UICollectionViewCell {
         addSubview(characterImageView)
         addSubview(nameLabel)
         
-        NSLayoutConstraint.activate([
-            
-            // Character Image
-            characterImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            characterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            characterImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+        nameLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(-16)
+            make.left.equalToSuperview().inset(15)
+        }
     
-            // Character Name Label
-            nameLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            nameLabel.heightAnchor.constraint(equalToConstant: 13),
-        ])
+        characterImageView.snp.makeConstraints { make in
+            make.left.top.right.bottom.equalToSuperview().inset(0)
+        }
     }
 }
