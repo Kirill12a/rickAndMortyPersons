@@ -11,9 +11,8 @@ import UIKit
 class HomeCollectionViewController: UICollectionViewController{
     
     
-    //model
-//    var homeViewModel = homeViewModel()
-    
+    var homeViewModel = HomeViewModel()
+
     override func viewDidLoad() {
     }
 }
